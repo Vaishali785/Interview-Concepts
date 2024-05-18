@@ -12,11 +12,13 @@
     9. Number(true) = 1
     10. Number("") = 0 // " "=false
 </pre>
+
 <pre>    
     while in conversion capitalize ones are used , e.g.
     String(123) = "123"
     Number("123") = 123
 </pre>
+
 <pre>    
     console.log("1" + 2 + 2 ) ==> 122
     console.log(1 + 2 + "2" ) ==> 32
@@ -91,53 +93,52 @@ d.) Array.of(item1,items2)
 
 # 4. Objects
 
-- Two ways to create an object:
-  a.) Singleton - using constructor like const obj = new Object()
-  b.) Object Literal - const obj = {}
+- Two ways to create an object:<br>
+  a.) Singleton - using constructor like const obj = new Object()<br>
+  b.) Object Literal - const obj = {}<br>
 
-Merge Objects
-a.) Object.assign(item1, item2 , item3) - Merges all items in item1 - To create a new object - Object.assign({},item1,item2,item3)
-
-b.) Spread Operator - const obj3 = {...obj1,...obj2}
+- Merge Objects<br>
+    a.) Object.assign(item1, item2 , item3) - Merges all items in item1 - To create a new object - Object.assign({},item1,item2,item3)
+    <br>
+    b.) Spread Operator - const obj3 = {...obj1,...obj2}
 
 # 5. this
 
-a.) Global
-browser - Window object
-node - {}
-b.) Inside a function
-function(){} - long object
-()=>{} - {}
+- Global<br>
+    - browser - Window object<br>
+    - node - {}<br>
+- Inside a function<br>
+    - function(){} - long object<br>
+    - ()=>{} - {}<br>
 
 # 6. IIFE
 
 a.) named
-
-<pre>
-    (function func(){console.log("hey there")})()
-</pre>
+    <pre>
+        (function func(){console.log("hey there")})()
+    </pre>
 
 b.) arrow
-
+    <pre>
+        ((name)=> {console.log(`hey there ${name}`)})(name)
+    </pre>
+Note: semi-colon is required in the end while writing two iife together.
 <pre>
+    <!-- won't work -->
+    (function func(){console.log("hey there")})()
     ((name)=> {console.log(`hey there ${name}`)})(name)
-</pre>
-
-Note: semi-color is required in the end while writing two iife together.
-
-<pre>
-<!-- won't work -->
-(function func(){console.log("hey there")})()
-((name)=> {console.log(`hey there ${name}`)})(name)
-
-<!-- working -->
-(function func(){console.log("hey there")})();
-((name)=> {console.log(`hey there ${name}`)})(name)
+    
+    <!-- working -->
+    (function func(){console.log("hey there")})();
+    ((name)=> {console.log(`hey there ${name}`)})(name)
 </pre>
 
 # 7. How does JS execute code + call stack
 
-Whenever we write some code, JS performs three steps: 1. Creates a Global Execution (or Environment), and this is allocated to 'this' 2. Memory Creation Phase ---> creates all variables and assign undefined to them, and for function variables its definition is assigned. 3. Execution Phase -----> assigns actual value to the variables
+Whenever we write some code, JS performs three steps: <br> 
+1. Creates a Global Execution (or Environment), and this is allocated to 'this' <br>
+2. Memory Creation Phase ---> creates all variables and assign undefined to them, and for function variables its definition is assigned.<br>
+3. Execution Phase -----> assigns actual value to the variables
 
 <pre>
     const val1 = 4;
@@ -183,9 +184,9 @@ Whenever we write some code, JS performs three steps: 1. Creates a Global Execut
 
 # 8. Loops
 
-a.) for-of loop ---> works for arrays only , error for objects
-b.) for-in loop ----> works both with arrays and by default returns keys of objects as well as arrays.
-c.) forEach ----> this is a built in property / method of array but it doesn't return anything.
+a.) for-of loop ---> works for arrays only , error for objects <br>
+b.) for-in loop ----> works both with arrays and by default returns keys of objects as well as arrays.<br>
+c.) forEach ----> this is a built in property / method of array but it doesn't return anything.<br>
 
 <pre>
     const myArr = [1,2,3,4,5]
@@ -203,40 +204,37 @@ c.) forEach ----> this is a built in property / method of array but it doesn't r
 - Regular functions have their own dynamic this binding, while arrow functions do not have their own this.
 - The value of this inside a regular function depends on how the function is invoked.
 - During a simple invocation the value of this equals to the global object(or undefined if the function runs in strict mode)
-
-<pre>
-function fun() {
-    console.log(this);
-}
-fun(); // prints global object (window) 
-</pre>
-
+    <pre>
+    function fun() {
+        console.log(this);
+    }
+    fun(); // prints global object (window) 
+    </pre>
 - During a method invocation the value of this is the object owning the method:
   <pre>
-  const obj = {
-      fun() {
-          console.log(this);
-      }
-  };
-  obj.fun(); // prints obj 
-  </pre>
+      const obj = {
+          fun() {
+              console.log(this);
+          }
+      };
+      obj.fun(); // prints obj 
+      </pre>
 - The value of this inside an arrow function remains the same throughout the lifecycle of the function and is always bound to the value of this in the closest non - arrow parent function.
-
-<pre>
-In the following example, fun1() is an outer regular function of fun2() arrow function:
-    const obj = {
-        fun1(items) {
-            console.log(this); // prints obj
-            const fun2 = () => {
-                console.log(this); // prints obj
+        <pre>
+        In the following example, fun1() is an outer regular function of fun2() arrow function:
+            const obj = {
+                fun1(items) {
+                    console.log(this); // prints obj
+                    const fun2 = () => {
+                        console.log(this); // prints obj
+                    };
+                    fun2()
+                }
             };
-            fun2()
-        }
-    };
-obj.fun1();
+        obj.fun1();
 
-<!--  this value inside the arrow function fun2() equals to this value of the outer function fun1(). -->
-</pre>
+      // this value inside the arrow function fun2() equals to this value of the outer function fun1(). -->
+    </pre>
 
 2. arguments object
 
@@ -244,67 +242,169 @@ obj.fun1();
 - No arguments object is defined inside an arrow function.
 - The arguments object is resolved lexically: the arrow function accesses arguments from the closest outer non - arrow function.
 
-<pre>
-function fun() {
-console.log(arguments);
-}
-myFunction('a', 'b'); // prints { 0: 'a', 1: 'b'}
-</pre>
-
-<pre>
-function fun1() {
-    const fun2 = () => {
-        console.log(arguments);
+    <pre>
+    function fun() {
+    console.log(arguments);
     }
-
-    fun2('c', 'd');
-}
-
-fun1('a', 'b'); // prints { 0: 'a', 1: 'b' }
-</pre>
+    myFunction('a', 'b'); // prints { 0: 'a', 1: 'b'}
+    </pre>
+    
+    <pre>
+    function fun1() {
+        const fun2 = () => {
+            console.log(arguments);
+        }
+    
+        fun2('c', 'd');
+    }
+    
+    fun1('a', 'b'); // prints { 0: 'a', 1: 'b' }
+    </pre>
 
 3. new keyword
 
 - Regular functions created using function declarations or expressions are constructible(means that we can use regular functions as constructors) and callable.And since regular functions are constructible, they can be called using the new keyword.
 - The arrow functions are only callable and not constructible, i.e arrow functions can never be used as constructor functions.Hence, they can never be called with the new keyword.
 
-<pre>
-function fun() {
-    console.log("hello");
-}
-const obj = new fun(); //valid code
- 
--------------------
+    <pre>
+    function fun() {
+        console.log("hello");
+    }
+    const obj = new fun(); //valid code
+     
+    -------------------
+    
+    let fun = () => {
+        console.log("hello);
+    }
+    
+    const obj = new fun(): // Gives error
+    </pre>
+    
+    <pre>
+    Find the output for the given code below.
+    
+    let obj = {
+    a: 100,
+    fun1() {
+    let a = 20;
+    let fun2 = () => {
+    console.log(this.a); // 100
+    }
+    fun2();
+    }
+    }
+    
+    obj.fun1(); 
+    </pre>
+    
+# 10. Bind vs Call vs Apply
 
-let fun = () => {
-    console.log("hello);
-}
+- The bind method creates a new function and sets the this keyword to the specified object.
+- The call method sets the this inside the function and immediately executes that function.
+- The apply() method is similar to call(). The difference is that the apply() method accepts an array of arguments instead of comma separated values.
 
-const obj = new fun(): // Gives error
-</pre>
+    <pre>
+    <!-- Default Case -->
+    const person = {
+      firstName: 'John',
+      lastName: 'Doe',
+      printName: function() {
+        console.log(this.firstName + ' ' + this.lastName);
+      }
+    };
+    
+    1.
+    person.printName(); // John Doe
+    
+    2.
+    const printFullName = person.printName;
+    printFullName(); // undefined undefined 
+    
+    </pre>
 
-<pre>
-Find the output for the given code below.
+1. Bind
+    <pre>
+    const john = {
+      name: 'John',
+      age: 24,
+    };
+    const jane = {
+      name: 'Jane',
+      age: 22,
+    };
+    function greeting() {
+      console.log(`Hi, I am ${this.name} and I am ${this.age} years old`);
+    }
+    
+    1.)
+    const greetingJohn = greeting.bind(john);
+    greetingJohn(); // Hi, I am John and I am 24 years old
+    const greetingJane = greeting.bind(jane);
+    greetingJane(); // Hi, I am Jane and I am 22 years old
+    
+    2.) With args
+    
+    function greeting(lang) {
+    console.log(`${lang}: Hi, I am ${this.name} and I am ${this.age} years old`);
+    }
+    
+    const greetingJohn = greeting.bind(john, 'en');
+    greetingJohn();
+    const greetingJane = greeting.bind(jane, 'es');
+    greetingJane();
+    
+    </pre>
 
-let obj = {
-a: 100,
-fun1() {
-let a = 20;
-let fun2 = () => {
-console.log(this.a); // 100
-}
-fun2();
-}
-}
+2. Call
+    <pre>
+    function greeting() {
+      console.log(`Hi, I am ${this.name} and I am ${this.age} years old`);
+    }
+    const john = {
+      name: 'John',
+      age: 24,
+    };
+    const jane = {
+      name: 'Jane',
+      age: 22,
+    };
+    greeting.call(john); // Hi, I am John and I am 24 years old
+    greeting.call(jane); // Hi, I am Jane and I am 22 years old
+    
+    <!-- with args  -->
+    
+    function greet(greeting) {
+    console.log(`${greeting}, I am ${this.name} and I am ${this.age} years old`);
+    }
+    greet.call(john, 'Hi'); // Hi, I am John and I am 24 years old
+    greet.call(jane, 'Hello'); // Hi, I am Jane and I am 22 years old
+    
+    </pre>
 
-obj.fun1(); 
-</pre>
+3. Apply
+    <pre>
+    function greet(greeting, lang) {
+      console.log(lang);
+      console.log(`${greeting}, I am ${this.name} and I am ${this.age} years old`);
+    }
+    const john = {
+      name: 'John',
+      age: 24,
+    };
+    const jane = {
+      name: 'Jane',
+      age: 22,
+    };
+    greet.apply(john, ['Hi', 'en']); // Hi, I am John and I am 24 years old
+    greet.apply(jane, ['Hola', 'es']); // Hi, I am Jane and I am 22 years old
+    </pre>
 
-# . Deep vs Shallow Copy
+# 11. Deep vs Shallow Copy
 
-Copy means to create another instance similar to prev one, changing the new instance wont change the original one.
-Shallow copy is a copy of an object whose properties share the same references as of the source object.
-Deep copy is a copy of an object whose properties don't share the same references as of the source object.
+- Copy means to create another instance similar to prev one, changing the new instance wont change the original one.
+- Shallow copy is a copy of an object whose properties share the same references as of the source object.
+- Deep copy is a copy of an object whose properties don't share the same references as of the source object.
 
 ### With primitive data types, it is fine
 
