@@ -702,11 +702,14 @@ Promise completed
 
 Finally always runs no matter Promise is resolved or rejected.
 
+</ul>
+
 ### Handling Promise( api call ) using async/await and then/catch
 
+<ul>
 <li> async/await doesn't handles catch part so for that we need to use try/catch block here. </li>
 
-    ```Javascript
+```Javascript
 
         // 1.
         async function getUsers(){
@@ -727,4 +730,11 @@ Finally always runs no matter Promise is resolved or rejected.
         })
         .then((users)=> console.log(users))
         .catch(error=> console.log(error))
-    ```
+
+        // Output
+        Json data
+        Json data
+
+```
+
+</ul>
