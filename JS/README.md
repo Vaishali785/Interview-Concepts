@@ -98,31 +98,35 @@ d.) Array.of(item1,items2)
   b.) Object Literal - const obj = {}<br>
 
 - Merge Objects<br>
-    a.) Object.assign(item1, item2 , item3) - Merges all items in item1 - To create a new object - Object.assign({},item1,item2,item3)
-    <br>
-    b.) Spread Operator - const obj3 = {...obj1,...obj2}
+  a.) Object.assign(item1, item2 , item3) - Merges all items in item1 - To create a new object - Object.assign({},item1,item2,item3)
+  <br>
+  b.) Spread Operator - const obj3 = {...obj1,...obj2}
 
 # 5. this
 
 - Global<br>
-    - browser - Window object<br>
-    - node - {}<br>
+  - browser - Window object<br>
+  - node - {}<br>
 - Inside a function<br>
-    - function(){} - long object<br>
-    - ()=>{} - {}<br>
+  - function(){} - long object<br>
+  - ()=>{} - {}<br>
 
 # 6. IIFE
 
 a.) named
-    <pre>
-        (function func(){console.log("hey there")})()
-    </pre>
+
+<pre>
+(function func(){console.log("hey there")})()
+</pre>
 
 b.) arrow
-    <pre>
-        ((name)=> {console.log(`hey there ${name}`)})(name)
-    </pre>
+
+<pre>
+((name)=> {console.log(`hey there ${name}`)})(name)
+</pre>
+
 Note: semi-colon is required in the end while writing two iife together.
+
 <pre>
     <!-- won't work -->
     (function func(){console.log("hey there")})()
@@ -135,7 +139,8 @@ Note: semi-colon is required in the end while writing two iife together.
 
 # 7. How does JS execute code + call stack
 
-Whenever we write some code, JS performs three steps: <br> 
+Whenever we write some code, JS performs three steps: <br>
+
 1. Creates a Global Execution (or Environment), and this is allocated to 'this' <br>
 2. Memory Creation Phase ---> creates all variables and assign undefined to them, and for function variables its definition is assigned.<br>
 3. Execution Phase -----> assigns actual value to the variables
@@ -220,20 +225,21 @@ c.) forEach ----> this is a built in property / method of array but it doesn't r
       obj.fun(); // prints obj 
       </pre>
 - The value of this inside an arrow function remains the same throughout the lifecycle of the function and is always bound to the value of this in the closest non - arrow parent function.
-        <pre>
-        In the following example, fun1() is an outer regular function of fun2() arrow function:
-            const obj = {
-                fun1(items) {
-                    console.log(this); // prints obj
-                    const fun2 = () => {
-                        console.log(this); // prints obj
-                    };
-                    fun2()
-                }
-            };
-        obj.fun1();
-
+  <pre>
+  In the following example, fun1() is an outer regular function of fun2() arrow function:
+  const obj = {
+  fun1(items) {
+  console.log(this); // prints obj
+  const fun2 = () => {
+  console.log(this); // prints obj
+  };
+  fun2()
+  }
+  };
+  obj.fun1();
+  
       // this value inside the arrow function fun2() equals to this value of the outer function fun1(). -->
+  
     </pre>
 
 2. arguments object
@@ -248,7 +254,7 @@ c.) forEach ----> this is a built in property / method of array but it doesn't r
     }
     myFunction('a', 'b'); // prints { 0: 'a', 1: 'b'}
     </pre>
-    
+
     <pre>
     function fun1() {
         const fun2 = () => {
@@ -280,7 +286,7 @@ c.) forEach ----> this is a built in property / method of array but it doesn't r
     
     const obj = new fun(): // Gives error
     </pre>
-    
+
     <pre>
     Find the output for the given code below.
     
@@ -297,7 +303,7 @@ c.) forEach ----> this is a built in property / method of array but it doesn't r
     
     obj.fun1(); 
     </pre>
-    
+
 # 10. Bind vs Call vs Apply
 
 - The bind method creates a new function and sets the this keyword to the specified object.
@@ -324,81 +330,81 @@ c.) forEach ----> this is a built in property / method of array but it doesn't r
     </pre>
 
 1. Bind
-    <pre>
-    const john = {
-      name: 'John',
-      age: 24,
-    };
-    const jane = {
-      name: 'Jane',
-      age: 22,
-    };
-    function greeting() {
-      console.log(`Hi, I am ${this.name} and I am ${this.age} years old`);
-    }
-    
-    1.)
-    const greetingJohn = greeting.bind(john);
-    greetingJohn(); // Hi, I am John and I am 24 years old
-    const greetingJane = greeting.bind(jane);
-    greetingJane(); // Hi, I am Jane and I am 22 years old
-    
-    2.) With args
-    
-    function greeting(lang) {
-    console.log(`${lang}: Hi, I am ${this.name} and I am ${this.age} years old`);
-    }
-    
-    const greetingJohn = greeting.bind(john, 'en');
-    greetingJohn();
-    const greetingJane = greeting.bind(jane, 'es');
-    greetingJane();
-    
-    </pre>
+<pre>
+const john = {
+  name: 'John',
+  age: 24,
+};
+const jane = {
+  name: 'Jane',
+  age: 22,
+};
+function greeting() {
+  console.log(`Hi, I am ${this.name} and I am ${this.age} years old`);
+}
+
+1.)
+const greetingJohn = greeting.bind(john);
+greetingJohn(); // Hi, I am John and I am 24 years old
+const greetingJane = greeting.bind(jane);
+greetingJane(); // Hi, I am Jane and I am 22 years old
+
+2.) With args
+
+function greeting(lang) {
+console.log(`${lang}: Hi, I am ${this.name} and I am ${this.age} years old`);
+}
+
+const greetingJohn = greeting.bind(john, 'en');
+greetingJohn();
+const greetingJane = greeting.bind(jane, 'es');
+greetingJane();
+
+</pre>
 
 2. Call
-    <pre>
-    function greeting() {
-      console.log(`Hi, I am ${this.name} and I am ${this.age} years old`);
-    }
-    const john = {
-      name: 'John',
-      age: 24,
-    };
-    const jane = {
-      name: 'Jane',
-      age: 22,
-    };
-    greeting.call(john); // Hi, I am John and I am 24 years old
-    greeting.call(jane); // Hi, I am Jane and I am 22 years old
-    
-    <!-- with args  -->
-    
-    function greet(greeting) {
-    console.log(`${greeting}, I am ${this.name} and I am ${this.age} years old`);
-    }
-    greet.call(john, 'Hi'); // Hi, I am John and I am 24 years old
-    greet.call(jane, 'Hello'); // Hi, I am Jane and I am 22 years old
-    
-    </pre>
+<pre>
+function greeting() {
+  console.log(`Hi, I am ${this.name} and I am ${this.age} years old`);
+}
+const john = {
+  name: 'John',
+  age: 24,
+};
+const jane = {
+  name: 'Jane',
+  age: 22,
+};
+greeting.call(john); // Hi, I am John and I am 24 years old
+greeting.call(jane); // Hi, I am Jane and I am 22 years old
+
+<!-- with args  -->
+
+function greet(greeting) {
+console.log(`${greeting}, I am ${this.name} and I am ${this.age} years old`);
+}
+greet.call(john, 'Hi'); // Hi, I am John and I am 24 years old
+greet.call(jane, 'Hello'); // Hi, I am Jane and I am 22 years old
+
+</pre>
 
 3. Apply
-    <pre>
-    function greet(greeting, lang) {
-      console.log(lang);
-      console.log(`${greeting}, I am ${this.name} and I am ${this.age} years old`);
-    }
-    const john = {
-      name: 'John',
-      age: 24,
-    };
-    const jane = {
-      name: 'Jane',
-      age: 22,
-    };
-    greet.apply(john, ['Hi', 'en']); // Hi, I am John and I am 24 years old
-    greet.apply(jane, ['Hola', 'es']); // Hi, I am Jane and I am 22 years old
-    </pre>
+<pre>
+functionk greet(greeting, lang) {
+  console.log(lang);
+  console.log(`${greeting}, I am ${this.name} and I am ${this.age} years old`);
+}
+const john = {
+  name: 'John',
+  age: 24,
+};
+const jane = {
+  name: 'Jane',
+  age: 22,
+};
+greet.apply(john, ['Hi', 'en']); // Hi, I am John and I am 24 years old
+greet.apply(jane, ['Hola', 'es']); // Hi, I am Jane and I am 22 years old
+</pre>
 
 # 11. Deep vs Shallow Copy
 
@@ -536,3 +542,189 @@ b[1] = 4
 console.log(b[1]) // 4
 </pre>
 </ul>
+
+# 12. Promises
+
+Promise is an object which represents the eventual completion (or failure) of an async task.
+It has three states:
+
+1. Pending
+2. Fulfilled
+3. Rejected
+
+### Create and Consuming a Promise
+
+<ul>
+
+<li> Simple Promise Creation </li>
+
+```Javascript
+
+    // 1.
+    new Promise(function(resolve,reject){
+        setTimeout(function(){
+            console.log("Inside setTimeout")
+        },1000)
+    })
+
+    // Output
+    Inside setTimeout
+```
+
+<li> Creating and consuming a promise </li>
+
+```Javascript
+    // Creation
+    const pOne = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            console.log("Inside setTimeout");
+        }, 1000)
+    })
+
+    // Consuming
+    pOne.then(() => {
+        console.log("Hey");
+    })
+
+    // Output
+    Inside setTimeout
+```
+
+<li>
+    In this above case only first console.log was printed and "hey" was never printed. Why?
+    Because we never told our promise to go there. To go to the "then" part we need to call resolve() bcoz "then" is connected with resolve.
+</li>
+
+```Javascript
+
+const pOne = new Promise(function (resolve, reject) {
+    setTimeout(function () {
+        console.log("Inside setTimeout");
+        resolve();
+    }, 1000)
+})
+
+pOne.then(() => {
+    console.log("Hey");
+})
+
+// Output
+Inside setTimeout
+Hey
+```
+
+<li>We can pass data to "then" and "catch" using resolve and reject respectively.</li>
+
+```Javascript
+
+const pOne = new Promise(function (resolve, reject) {
+	setTimeout(function () {
+		console.log("Inside setTimeout");
+		const sum = 13 + 7;
+		if (sum > 10) {
+			resolve("Hurray!");
+		} else {
+			reject("Issue");
+		}
+	}, 1000);
+});
+
+pOne
+	.then((data) => {
+		console.log("Hey", data);
+	})
+	.catch((err) => console.log("error", err));
+
+// Output
+Inside setTimeout
+Hey Hurray
+```
+
+<li> Now what happens if we pass / return some data inside .then part where can we receive that returned value. </li>
+
+```Javascript
+
+const pOne = new Promise(function (resolve, reject) {
+	setTimeout(function () {
+		console.log("Inside setTimeout");
+		const user = { name: "Vaishali", email: "v@gmail.com" };
+		if (user) {
+			resolve(user);
+		} else {
+			reject("Issue");
+		}
+	}, 1000);
+});
+
+pOne
+	.then((data) => {
+		console.log("Hey", data);
+		return data.name;
+	})
+	.catch((err) => console.log("error", err));
+
+// Output
+Inside setTimeout
+Hey { name: 'Vaishali', email: 'v@gmail.com' }
+```
+
+<li> The returned value can be received in a chained then, as shown below  </li>
+
+```Javascript
+
+const pOne = new Promise(function (resolve, reject) {
+	setTimeout(function () {
+		console.log("Inside setTimeout");
+		const user = { name: "Vaishali", email: "v@gmail.com" };
+		if (user) {
+			resolve(user);
+		} else {
+			reject("Issue");
+		}
+	}, 1000);
+});
+
+pOne
+	.then((data) => {
+		console.log("Hey", data);
+		return data.name;
+	})
+	.then((username) => console.log(username))
+	.catch((err) => console.log("error", err))
+    .finally(()=> console.log("Promise completed" ))
+
+// Output
+Inside setTimeout
+Hey { name: 'Vaishali', email: 'v@gmail.com' }
+Vaishali
+Promise completed
+```
+
+Finally always runs no matter Promise is resolved or rejected.
+
+### Handling Promise( api call ) using async/await and then/catch
+
+<li> async/await doesn't handles catch part so for that we need to use try/catch block here. </li>
+
+    ```Javascript
+
+        // 1.
+        async function getUsers(){
+            try{
+                const response = await fetch('https://jsonplaceholder.typicode.com/users/')
+                const data = await response.json();
+                console.log(data);
+            }catch(error){
+                console.log(error);
+            }
+        }
+        getUsers()
+
+        // 2.
+        fetch('https://jsonplaceholder.typicode.com/users/')
+        .then(data=>{
+            return data.json();
+        })
+        .then((users)=> console.log(users))
+        .catch(error=> console.log(error))
+    ```
