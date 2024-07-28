@@ -1,0 +1,21 @@
+! What is Virtual DOM in React JS and why is it necessary?
+
+- Virtual DOM is the virtual representation of Real DOM
+- React update the state changes in Virtual DOM first and then it syncs with Real DOM
+
+1. Whenever any underlying data changes, the entire UI is re-rendered in the virtual DOM view. 
+2. The difference between the previous DOM representation and the new one is then calculated.
+3. Once the calculations are done, the real DOM will only be updated with what has really changed.
+
+- Virtual DOM makes the performance faster, not because the processing itself is done in less time.The reason is the amount of changed information – rather than wasting time on updating the entire page, you can dissect it into small elements and interactions
+
+
+
+? Virtual DOM Advantages
+
+- It is a lightweight copy of the original DOM.
+- It is maintained by JavaScript libraries.
+- After manipulation it only re-renders changed elements.
+- Updates are lightweight.
+- Performance is fast and UX is optimised.
+- Highly efficient as it performs batch updates.

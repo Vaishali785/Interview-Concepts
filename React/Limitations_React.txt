@@ -1,0 +1,4 @@
+! Limitations of React 
+~ It's a library not a framework.
+~ Doesn't support SEO.
+~ It uses JSX, which can be a little difficult to understand for beginners.

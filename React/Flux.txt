@@ -1,0 +1,17 @@
+Flux is an application design paradigm used as a replacement for the more traditional mvc pattern. 
+It is not a framework or a library but a new kind of architecture that complements React and the concept of Unidirectional Data Flow. 
+
+
+                    store <---------------------------
+                      |                              |
+                      |                              |
+                      |                              |
+                      |                              |
+                      V                              |
+                    View                        Dispatcher 
+                      |                              |
+                      |                              |
+                      | Dispatch                     |
+                      |                              |
+                      V                              |
+                    Action -------------------------->
