@@ -738,3 +738,8 @@ Finally always runs no matter Promise is resolved or rejected.
 ```
 
 </ul>
+
+# 13. Fetch
+
+- Although fetch is a part of web api like setTimeout and setInterval, but there is a separate queue to execute fetch calls which is called Microtask Queue or Priority Queue. So if in any function there is a setTimeout with 1s timer and a fetch call taking 1s, fetch will be called first then setTimeout will run.
+- If we use fetch to do any network request, then it will always be fulfilled (resolve) if the request was reached to the network. Reject will only work if the request couldn't reached the network for any reason. That's why 404 error goes to resolve as the request was successful that's how we know it was 404 (not found).
