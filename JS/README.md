@@ -249,7 +249,7 @@ c.) forEach ----> this is a built in property / method of array but it doesn't r
 - The arguments object is resolved lexically: the arrow function accesses arguments from the closest outer non - arrow function.
 
     <pre>
-    function fun() {
+    function myFunction() {
     console.log(arguments);
     }
     myFunction('a', 'b'); // prints { 0: 'a', 1: 'b'}
@@ -384,13 +384,13 @@ function greet(greeting) {
 console.log(`${greeting}, I am ${this.name} and I am ${this.age} years old`);
 }
 greet.call(john, 'Hi'); // Hi, I am John and I am 24 years old
-greet.call(jane, 'Hello'); // Hi, I am Jane and I am 22 years old
+greet.call(jane, 'Hello'); // Hello, I am Jane and I am 22 years old
 
 </pre>
 
 3. Apply
 <pre>
-functionk greet(greeting, lang) {
+function greet(greeting, lang) {
   console.log(lang);
   console.log(`${greeting}, I am ${this.name} and I am ${this.age} years old`);
 }
