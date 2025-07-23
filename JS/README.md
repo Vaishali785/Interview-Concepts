@@ -304,6 +304,33 @@ c.) forEach ----> this is a built in property / method of array but it doesn't r
     obj.fun1(); 
     </pre>
 
+
+
+
+### Interview Question on Closure
+
+```javascript
+function createCounter() {
+  let count = 0;
+
+  return function () {
+    count++;
+    console.log(count);
+  };
+}
+const counter1 = createCounter();
+const counter2 = createCounter();
+
+counter1(); 
+counter1(); 
+counter2(); 
+
+Output
+1
+2
+1
+```
+
 # 10. Bind vs Call vs Apply
 
 - The bind method creates a new function and sets the this keyword to the specified object.
@@ -738,6 +765,38 @@ Finally always runs no matter Promise is resolved or rejected.
 ```
 
 </ul>
+
+### Interview Question on Promise 
+```javascript
+
+console.log('A');
+
+setTimeout(() => {
+  console.log('B');
+  Promise.resolve().then(() => {
+    console.log('C');
+  });
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log('D');
+  setTimeout(() => {
+    console.log('E');
+  }, 0);
+});
+
+console.log('F');
+
+
+Output
+A
+F 
+D 
+B 
+C 
+E
+
+```
 
 # 13. Fetch
 
