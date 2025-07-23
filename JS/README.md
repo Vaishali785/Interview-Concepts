@@ -238,7 +238,7 @@ c.) forEach ----> this is a built in property / method of array but it doesn't r
   };
   obj.fun1();
   
-      // this value inside the arrow function fun2() equals to this value of the outer function fun1(). -->
+      // this value inside the arrow function fun2() equals to this value of the outer function fun1().
   
     </pre>
 
