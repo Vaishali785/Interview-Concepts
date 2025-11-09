@@ -42,6 +42,8 @@
 // const printFullName = person.printName;
 // printFullName(); // undefined undefined
 
+// Fix : person.printName.bind(person)
+
 // const pOne = new Promise(function (resolve, reject) {
 //     setTimeout(function () {
 //         console.log("Inside setTimeout");
@@ -101,3 +103,5 @@ p1.then(() => {
 })
 
 console.log(2)
+
+// Result:  12BAVC
