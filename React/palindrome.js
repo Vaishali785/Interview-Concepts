@@ -5,7 +5,7 @@ function palindrome(palindromeString) {
 	let mid = roundedVal - 1 //2
 	let result = true
 	for (let char = 0; char <= mid; char++) {
-		if (!(palindromeString[char] == palindromeString[len - 1])) {
+		if (!(palindromeString[char] == palindromeString[len - 1-i])) {
 			result = false
 			break
 		}
