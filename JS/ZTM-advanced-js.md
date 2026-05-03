@@ -1,4 +1,4 @@
-<img src='' />
+<img src='https://github.com/Vaishali785/Interview-Concepts/blob/main/JS/closure.jpg' height="700" />
 
 ```javascript
 // ================== CLOSURE ================
