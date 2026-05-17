@@ -283,3 +283,18 @@ const result = purchaseItem(
 
 console.log(result)
 ```
+
+## OOPs vs FP
+
+### OOP
+1. Beneficial - few operations on common data
+2. Stateful
+3. Side Effects - outside methods changes the internal data
+4. Imperative
+
+### FP
+1. Beneficial - Many operations on fixed data
+2. Stateless
+3. Pure functions
+4. Declarative
+
